@@ -1,0 +1,9 @@
+{% extends 'booking/base.html' %}
+
+{% block content %}
+<div class="text-center">
+    <h2 class="mb-3">Welcome to Cargo Lorry Booking System</h2>
+    <p class="lead">Book your lorry online, track your bookings, and manage them easily.</p>
+    <a href="{% url 'book' %}" class="btn btn-primary btn-lg">Book Now</a>
+</div>
+{% endblock %}

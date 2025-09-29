@@ -1,0 +1,29 @@
+{% extends 'booking/base.html' %}
+
+{% block content %}
+<h2 class="mb-3">My Bookings</h2>
+{% if bookings %}
+    <table class="table table-bordered table-striped shadow">
+        <thead class="table-dark">
+            <tr>
+                <th>Pickup</th>
+                <th>Drop</th>
+                <th>Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for booking in bookings %}
+                <tr>
+                    <td>{{ booking.pickup_location }}</td>
+                    <td>{{ booking.drop_location }}</td>
+                    <td>{{ booking.date }}</td>
+                    <td>{{ booking.status }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p class="alert alert-info">No bookings yet.</p>
+{% endif %}
+{% endblock %}
