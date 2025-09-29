@@ -4,7 +4,7 @@ from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from .forms import BookingForm,LoginForm
 from .models import Booking
-
+from django.contrib import messages
 def home(request):
     return render(request, 'booking/home.html')
 
@@ -32,8 +32,9 @@ def login_view(request):
 
 
 def logout_view(request):
-    logout(request)
-    return redirect('home')
+    logout(request)  
+    messages.success(request, "You have been logged out successfully.")
+    return redirect('login') 
 
 @login_required
 def book(request):

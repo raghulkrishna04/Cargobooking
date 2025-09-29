@@ -6,20 +6,33 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     {% load static %}
+    <style>
+        body {
+            background-image: url("{% static 'booking/background.jpeg' %}");
+            background-size: cover;       /* cover the whole page */
+            background-repeat: no-repeat; /* don’t repeat */
+            background-attachment: fixed; /* stay fixed when scrolling */
+        }
+    </style>
 </head>
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="{% url 'home' %}">Cargo Lorry Booking</a>
+             
+            <a class="navbar-brand text-white" href="{% url 'home' %}">Cargo Lorry Booking</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>
+                    {% if user.is_authenticated %}
+  <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}" >Logout</a></li>
+{% else %}
+  <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+{% endif %}
+
                     <li class="nav-item"><a class="nav-link" href="{% url 'book' %}">Book</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'mybookings' %}">My Bookings</a></li>
 
